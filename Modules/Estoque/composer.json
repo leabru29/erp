@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/estoque",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Estoque\\": "app/",
+            "Modules\\Estoque\\Database\\Factories\\": "database/factories/",
+            "Modules\\Estoque\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Estoque\\Tests\\": "tests/"
+        }
+    }
+}

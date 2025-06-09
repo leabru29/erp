@@ -1,0 +1,10 @@
+{
+    "Financeiro": true,
+    "Vendas": true,
+    "Compras": true,
+    "Estoque": true,
+    "Producao": true,
+    "RH": true,
+    "Usuarios": true,
+    "Relatorios": true
+}
