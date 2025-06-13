@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('cargos', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('departamento_id')->nullable()->constrained('departamentos')->nullOnDelete();
+            $table->string('nome');
+            $table->text('descricao')->nullable();
+            $table->decimal('salario_base', 10, 2)->nullable();
+            $table->boolean('ativo')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('cargos');
+    }
+};
