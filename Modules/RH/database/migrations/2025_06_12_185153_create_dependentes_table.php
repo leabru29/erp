@@ -4,13 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up(): void
     {
         Schema::create('dependentes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('colaborador_id');
+            $table->foreignUuid('colaborador_id')->constrained('colaboradores')->onUpdate('cascade');
             $table->string('nome');
             $table->date('data_nascimento');
             $table->string('parentesco');
@@ -20,10 +19,6 @@ return new class extends Migration
             $table->text('observacoes')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('colaborador_id')
-                  ->references('id')
-                  ->on('colaboradors')
-                  ->onDelete('cascade');
         });
     }
 
