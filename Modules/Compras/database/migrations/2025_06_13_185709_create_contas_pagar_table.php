@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up(): void
     {
         Schema::create('contas_pagar', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('fornecedor_id');
-            $table->uuid('pedido_compra_id')->nullable();
+            $table->foreignUuid('fornecedor_id')->constrained('fornecedores')->onUpdate('cascade');
+            $table->foreignUuid('pedido_compra_id')->constrained('pedido_compras')->onUpdate('cascade');
             $table->string('descricao');
             $table->decimal('valor_total', 12, 2);
             $table->date('data_emissao');
@@ -23,8 +22,6 @@ return new class extends Migration
             $table->boolean('pago')->default(false);
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
-            $table->foreign('pedido_compra_id')->references('id')->on('pedidos_compra');
         });
     }
 

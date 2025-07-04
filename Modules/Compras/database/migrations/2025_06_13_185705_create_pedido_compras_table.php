@@ -11,12 +11,12 @@ return new class () extends Migration {
             $table->uuid('id')->primary();
             $table->string('numero')->unique();
             $table->foreignUuid('fornecedor_id')->constrained('fornecedores');
+            $table->foreignUuid('cliente_id')->constrained('clientes')->onUpdate('cascade');
             $table->date('data_pedido');
             $table->date('data_previsao_entrega')->nullable();
             $table->decimal('valor_total', 10, 2)->default(0);
             $table->string('status')->default('ABERTO');
             $table->text('observacoes')->nullable();
-            $table->foreignUuid('usuario_id')->nullable()->constrained('usuarios');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -9,14 +9,12 @@ return new class () extends Migration {
     {
         Schema::create('itens_pedido_venda', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('pedido_venda_id');
+            $table->foreignUuid('pedido_venda_id')->constrained('pedido_vendas')->onUpdate('cascade');
             $table->uuid('produto_id');
             $table->decimal('quantidade', 10, 2);
             $table->decimal('valor_unitario', 10, 2);
             $table->decimal('subtotal', 10, 2);
             $table->timestamps();
-
-            $table->foreign('pedido_venda_id')->references('id')->on('pedidos_venda');
         });
     }
 

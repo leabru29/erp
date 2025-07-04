@@ -9,8 +9,8 @@ return new class () extends Migration {
     {
         Schema::create('cotacoes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('fornecedor_id');
-            $table->uuid('pedido_compra_id')->nullable();
+            $table->foreignUuid('fornecedor_id')->constrained('fornecedores')->onUpdate('cascade');
+            $table->foreignUuid('pedido_compra_id')->constrained('pedido_compras')->onUpdate('cascade');
             $table->string('numero')->unique();
             $table->date('data_emissao');
             $table->date('data_validade')->nullable();
@@ -20,8 +20,6 @@ return new class () extends Migration {
             $table->string('status')->default('aberta');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
-            $table->foreign('pedido_compra_id')->references('id')->on('pedidos_compra');
         });
     }
 
