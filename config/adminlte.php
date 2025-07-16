@@ -299,99 +299,152 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
 
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+    // Ítens do Navbar
+    [
+        'type'         => 'navbar-search',
+        'text'         => 'Buscar',
+        'topnav_right' => true,
+    ],
+    [
+        'type'         => 'fullscreen-widget',
+        'topnav_right' => true,
+    ],
+
+    // Menu lateral principal
+    [
+        'text' => 'Dashboard',
+        'url'  => 'dashboard',
+        'icon' => 'fas fa-tachometer-alt',
+    ],
+
+    [
+        'text'    => 'Cadastros Gerais',
+        'icon'    => 'fas fa-folder-open',
+        'submenu' => [
+            [
+                'text' => 'Clientes',
+                'url'  => 'clientes',
+                'icon' => 'fas fa-users',
+            ],
+            [
+                'text' => 'Fornecedores',
+                'url'  => 'fornecedores',
+                'icon' => 'fas fa-truck',
+            ],
+            [
+                'text' => 'Produtos',
+                'url'  => 'produtos',
+                'icon' => 'fas fa-boxes',
+            ],
+            [
+                'text' => 'Usuários',
+                'route'  => 'usuarios.view.index',
+                'icon' => 'fas fa-user-cog',
+            ],
         ],
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+    ],
+
+    [
+        'text'    => 'RH',
+        'icon'    => 'fas fa-user-tie',
+        'submenu' => [
+            [
+                'text' => 'Colaboradores',
+                'url'  => 'rh/colaboradores',
+            ],
+            [
+                'text' => 'Afastamentos',
+                'url'  => 'rh/afastamentos',
+            ],
+            [
+                'text' => 'Benefícios',
+                'url'  => 'rh/beneficios',
+            ],
         ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+    ],
+
+    [
+        'text'    => 'Compras',
+        'icon'    => 'fas fa-shopping-cart',
+        'submenu' => [
+            [
+                'text' => 'Pedidos de Compra',
+                'url'  => 'compras/pedidos',
+            ],
+            [
+                'text' => 'Notas Fiscais de Entrada',
+                'url'  => 'compras/notas-fiscais',
+            ],
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+    ],
+
+    [
+        'text'    => 'Vendas',
+        'icon'    => 'fas fa-cash-register',
+        'submenu' => [
+            [
+                'text' => 'Pedidos de Venda',
+                'url'  => 'vendas/pedidos',
+            ],
+            [
+                'text' => 'Comprovantes de Pagamento',
+                'url'  => 'vendas/comprovantes',
+            ],
         ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
+    ],
+
+    [
+        'text'    => 'Financeiro',
+        'icon'    => 'fas fa-wallet',
+        'submenu' => [
+            [
+                'text' => 'Contas a Pagar',
+                'url'  => 'financeiro/pagar',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Contas a Receber',
+                    'url'  => 'financeiro/receber',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Caixa',
+                    'url'  => 'financeiro/caixa',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
+            'text'    => 'Relatórios',
+            'icon'    => 'fas fa-chart-line',
+            'submenu' => [
+                [
+                    'text' => 'Relatórios de Vendas',
+                    'url'  => 'relatorios/vendas',
+                ],
+                [
+                    'text' => 'Relatórios de Compras',
+                    'url'  => 'relatorios/compras',
+                ],
+                [
+                    'text' => 'Relatórios Financeiros',
+                    'url'  => 'relatorios/financeiro',
+                ],
+            ],
+        ],
+
+        ['header' => 'CONFIGURAÇÕES DO SISTEMA'],
+
+        [
+            'text' => 'Configurações Gerais',
+            'url'  => 'configuracoes',
+            'icon' => 'fas fa-cogs',
         ],
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+            'text' => 'Sair',
+            'url'  => 'logout',
+            'icon' => 'fas fa-sign-out-alt',
         ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+
     ],
 
     /*
@@ -430,71 +483,106 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
+                ],
+            ],
+        ],
+        'JQueryMask' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js',
+                ],
+            ],
+        ],
+        'Js' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/custom-scripts.js',
+                ],
+            ],
+        ],
+        'Toastr' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/toastr/toastr.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/toastr/toastr.min.js',
                 ],
             ],
         ],
         'Pace' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
                 ],
             ],
