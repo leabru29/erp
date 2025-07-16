@@ -8,12 +8,12 @@ class UpdateUsuarioRequest extends FormRequest
 {
     public function rules(): array
     {
+        $id = $this->usuario?->id ?? $this->route('usuario') ?? null;
         return [
             'nome' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:usuarios,email,' . $this->route('usuarios'),
-            'senha' => 'sometimes|min:6|max:8',
+            'email' => 'sometimes|email|unique:usuarios,email,' . $id,
             'telefone' => 'string',
-            'cpf' => 'sometimes|formato_cpf|unique:usuarios,cpf,' . $this->route('usuarios'),
+            'cpf' => 'sometimes|formato_cpf|unique:usuarios,cpf,' . $id,
             'cargo' => 'sometimes|string',
             'nivel_acesso' => 'sometimes|in:admin,gerente,usuario',
             'ativo' => 'boolean',
